@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">movies-app</string>
+    <!-- home -->
+    <string name="app_movies">App Filmes</string>
+    <string name="application_name">Filmes</string>
+    <string name="home_evaluation"> %1$s/10</string>
 </resources>
