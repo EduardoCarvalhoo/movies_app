@@ -16,7 +16,8 @@
         tools:targetApi="31">
         <activity
             android:name=".presentation.ui.details.DetailsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".presentation.ui.home.HomeActivity"/>
         <activity
             android:name=".presentation.ui.home.HomeActivity"
             android:exported="true">
