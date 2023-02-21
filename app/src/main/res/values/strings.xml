@@ -3,4 +3,20 @@
     <string name="app_movies">App Filmes</string>
     <string name="application_name">Filmes</string>
     <string name="home_evaluation"> %1$s/10</string>
+
+    <!-- Movie Details -->
+    <string name="details_image">Imagem da capa do filme</string>
+    <string name="details_title_text">Título: %1$s</string>
+    <string name="details_date_text">Data de Lançamento: %1$s</string>
+    <string name="details_popularity_text">Popularidade: %1$s</string>
+    <string name="details_description_text">Descrição: %1$s</string>
+
+    <!-- Erro dialog messages -->
+    <string name="error_dialog_title">Erro!</string>
+    <string name="error_dialog_positive_button_message">Tentar novamente</string>
+    <string name="error_dialog_negative_button_message">Cancelar</string>
+    <string name="no_internet_connection_error">Sem conexão com a internet. Tente novamente!</string>
+    <string name="generic_error">Ocorreu um erro, tente mais tarde!</string>
+    <string name="server_error">Ocorreu um erro em nossos servidores, tente mais tarde!</string>
+    <string name="unauthorized_user_error">Usuário não autorizado!</string>
 </resources>
