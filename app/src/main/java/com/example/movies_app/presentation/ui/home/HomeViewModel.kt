@@ -3,26 +3,28 @@ package com.example.movies_app.presentation.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.movies_app.R
 import com.example.movies_app.data.repository.MoviesRepository
 import com.example.movies_app.data.response.MoviesResult
 import com.example.movies_app.domain.model.Movie
 import com.example.movies_app.utils.NoInternetException
 import com.example.movies_app.utils.UnauthorizedException
-import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel() {
+class HomeViewModel(
+    private val moviesRepository: MoviesRepository,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
+) : ViewModel() {
     private val moviesLoadSuccessfullyMutableLiveData = MutableLiveData<List<Movie>>()
     val moviesLoadSuccessfullyLiveData: LiveData<List<Movie>> =
         moviesLoadSuccessfullyMutableLiveData
     private val moviesLoadErrorMutableLiveData = MutableLiveData<Int>()
     val moviesLoadErrorLiveData: LiveData<Int> = moviesLoadErrorMutableLiveData
-
-
     fun getMovies() {
-        CoroutineScope(Dispatchers.IO).launch {
+        viewModelScope.launch(dispatcher) {
             moviesRepository.getMovieList { result: MoviesResult ->
                 when (result) {
                     is MoviesResult.Success -> {
