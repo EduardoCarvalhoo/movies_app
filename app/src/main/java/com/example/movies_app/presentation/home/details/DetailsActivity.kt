@@ -1,4 +1,4 @@
-package com.example.movies_app.presentation.ui.details
+package com.example.movies_app.presentation.home.details
 
 import android.content.Context
 import android.content.Intent

@@ -4,7 +4,7 @@ import android.app.Activity
 import androidx.appcompat.app.AlertDialog
 import com.example.movies_app.R
 
-fun Activity.showAlertDialog(message: String, positiveButtonAction: (() -> Unit)? = null){
+fun Activity.showAlertDialog(message: Int, positiveButtonAction: (() -> Unit)? = null){
     AlertDialog.Builder(this)
         .setMessage(message)
         .setPositiveButton(R.string.error_dialog_positive_button_message){ _, _ ->

@@ -1,10 +1,14 @@
-package com.example.movies_app.presentation.ui.home
+package com.example.movies_app.presentation.home
 
+import android.accounts.NetworkErrorException
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.movies_app.R
 import com.example.movies_app.databinding.ActivityHomeBinding
+import com.example.movies_app.data.exception.ServerErrorException
 import com.example.movies_app.domain.model.Movie
-import com.example.movies_app.presentation.ui.details.DetailsActivity
+import com.example.movies_app.presentation.home.details.DetailsActivity
+import com.example.movies_app.presentation.home.adapter.HomeAdapter
 import com.example.movies_app.utils.showAlertDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -24,9 +28,17 @@ class HomeActivity : AppCompatActivity() {
         viewModel.moviesLoadSuccessfullyLiveData.observe(this) { movies ->
             setupRecyclerView(movies)
         }
-        viewModel.moviesLoadErrorLiveData.observe(this) { errorMessageCode ->
-            showAlertDialog(getString(errorMessageCode)) {
-                viewModel.getMovies()
+        viewModel.moviesLoadErrorLiveData.observe(this) { exception ->
+            when (exception) {
+                is NetworkErrorException -> showAlertDialog(R.string.no_internet_connection_error) {
+                    viewModel.getMovies()
+                }
+                is ServerErrorException -> showAlertDialog(R.string.server_error) {
+                    viewModel.getMovies()
+                }
+                else -> showAlertDialog(R.string.generic_error) {
+                    viewModel.getMovies()
+                }
             }
         }
     }
