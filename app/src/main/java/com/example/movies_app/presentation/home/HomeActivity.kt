@@ -7,7 +7,7 @@ import com.example.movies_app.R
 import com.example.movies_app.databinding.ActivityHomeBinding
 import com.example.movies_app.data.exception.ServerErrorException
 import com.example.movies_app.domain.model.Movie
-import com.example.movies_app.presentation.home.details.DetailsActivity
+import com.example.movies_app.presentation.details.DetailsActivity
 import com.example.movies_app.presentation.home.adapter.HomeAdapter
 import com.example.movies_app.utils.showAlertDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
